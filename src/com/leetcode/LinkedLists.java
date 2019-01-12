@@ -6,7 +6,7 @@ class ListNode {
     ListNode(int x) { val = x; }
 }
 
-public class LinkedList {
+public class LinkedLists {
     // 19 Remove Nth Node From End of List
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummyHead = new ListNode(0);
@@ -117,5 +117,19 @@ public class LinkedList {
         return p1;
     }
 
-
+    // 24. Swap Nodes in Pairs
+    public ListNode swapPairs(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode curr = dummy;
+        while (curr.next != null && curr.next.next != null) {
+            ListNode first = curr.next;
+            ListNode second = curr.next.next;
+            first.next = second.next;
+            curr.next = second;
+            second.next = first;
+            curr = curr.next.next;
+        }
+        return dummy.next;
+    }
 }

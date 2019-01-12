@@ -1,9 +1,6 @@
 package com.leetcode;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DP {
 
@@ -69,5 +66,67 @@ public class DP {
         return res > 2 ? res : 0;
     }
 
+    // 55 Jump Game
+    public boolean canJump(int[] nums) {
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > max) {
+                return false;
+            }
+            max = Math.max(max, i + nums[i]);
+        }
+        return true;
+    }
 
+    // 322 Coin Change
+    public int coinChange(int[] coins, int amount) {
+        int dp[] = new int[amount + 1];
+        Arrays.fill(dp, amount + 1);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (coins[j] <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+
+    // 518. Coin Change 2
+    public int change(int amount, int[] coins) {
+        int[][] dp = new int[coins.length + 1][amount + 1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= coins.length; i++) {
+            dp[i][0] = 1;
+            for (int j = 1; j <= amount; j++) {
+                dp[i][j] = dp[i-1][j];
+                if (j - coins[i-1] >= 0) {
+                    dp[i][j] += dp[i][j - coins[i-1]];
+                }
+            }
+        }
+        return dp[coins.length][amount];
+    }
+
+    // 300 Longest Increasing Subsequence
+    public int lengthOfLIS(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int res = 1;
+        for (int i = 1; i < nums.length; i++) {
+            int tempMax = 0;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    tempMax = Math.max(tempMax, dp[j]);
+                }
+            }
+            dp[i] = tempMax + 1;
+            res = Math.max(res, dp[i]);
+        }
+        return res;
+    }
 }

@@ -13,6 +13,14 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+class TreeLinkNode {
+    int val;
+    TreeLinkNode left;
+    TreeLinkNode right;
+    TreeLinkNode next;
+    TreeLinkNode(int x) { val = x; }
+}
+
 public class Trees {
 
     // 98 Validate Binary Search Tree
@@ -87,5 +95,62 @@ public class Trees {
         node.left = helper(nums, low, mid - 1);
         node.right = helper(nums, mid + 1, high);
         return node;
+    }
+
+    // 105 Construct Binary Tree from Preorder and Inorder Traversal
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return build(0, 0, inorder.length - 1, preorder, inorder);
+    }
+
+    public TreeNode build(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) {
+        if (preStart >= preorder.length || inStart > inEnd) {
+            return null;
+        }
+
+        TreeNode root = new TreeNode(preorder[preStart]);
+        int inIndex = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inorder[i] == root.val) {
+                inIndex = i;
+            }
+        }
+        root.left = build(preStart + 1, inStart, inIndex - 1, preorder, inorder);
+        root.right = build(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
+        return root;
+    }
+
+
+    // 116 Populating Next Right Pointers in Each Node
+    public void connect(TreeLinkNode root) {
+        if (root == null) return;
+
+        TreeLinkNode curr = root;
+
+        while (curr.left != null) {
+            TreeLinkNode dummy = new TreeLinkNode(0);
+            TreeLinkNode node = dummy;
+            while (curr != null) {
+                node.next = curr.left;
+                node = node.next;
+                node.next = curr.right;
+                node = node.next;
+                curr = curr.next;
+            }
+            curr = dummy.next;
+        }
+//         TreeLinkNode pre = root;
+//         TreeLinkNode curr = null;
+//         while (pre.left != null) {
+//             curr = pre;
+//             while (curr != null) {
+//                 curr.left.next = curr.right;
+//                 if (curr.next != null) {
+//                     curr.right.next = curr.next.left;
+//                 }
+//                 curr = curr.next;
+//             }
+//             pre = pre.left;
+//         }
+
     }
 }

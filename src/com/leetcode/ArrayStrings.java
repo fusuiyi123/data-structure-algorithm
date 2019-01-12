@@ -1,7 +1,6 @@
 package com.leetcode;
 
 import java.util.*;
-import java.util.LinkedList;
 
 public class ArrayStrings {
 
@@ -409,4 +408,6 @@ public class ArrayStrings {
         }
         return R - L - 1;
     }
+
+
 }
