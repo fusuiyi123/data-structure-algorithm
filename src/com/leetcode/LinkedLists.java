@@ -29,7 +29,7 @@ public class LinkedLists {
 
 
     // 206 Reverse Linked List
-    public ListNode reverseList(ListNode head) {
+    private ListNode reverseList(ListNode head) {
 
         ListNode prev = null;
         ListNode curr = head;
@@ -131,5 +131,28 @@ public class LinkedLists {
             curr = curr.next.next;
         }
         return dummy.next;
+    }
+
+
+    // 143. Reorder List
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null) return;
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode p1 = head;
+        ListNode p2 = reverseList(slow.next);
+        slow.next = null;
+        while (p2 != null) {
+            ListNode temp1 = p1.next;
+            ListNode temp2 = p2.next;
+            p1.next = p2;
+            p2.next = temp1;
+            p1 = temp1;
+            p2 = temp2;
+        }
     }
 }
