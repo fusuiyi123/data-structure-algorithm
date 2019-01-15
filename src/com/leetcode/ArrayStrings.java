@@ -81,14 +81,14 @@ public class ArrayStrings {
     }
 
 
-    class MonotonicQueue {
-        LinkedList<Integer> list;
+    class MonotonicQueue<Key extends Comparable<Key>> {
+        LinkedList<Key> list;
         MonotonicQueue() {
             list = new LinkedList<>();
         }
 
-        void push(int val) {
-            while (!list.isEmpty() && val > list.peekLast()) {
+        void push(Key val) {
+            while (!list.isEmpty() && val.compareTo(list.peekLast()) > 0) {
                 list.pollLast();
             }
             list.offer(val);
@@ -98,7 +98,7 @@ public class ArrayStrings {
             list.pop();
         }
 
-        int getMax() {
+        Key getMax() {
             assert !list.isEmpty();
             return list.peekFirst();
         }
@@ -112,7 +112,7 @@ public class ArrayStrings {
         int n = nums.length;
         int[] res = new int[n - k + 1];
         int ri = 0;
-        MonotonicQueue monotonicQueue = new MonotonicQueue();
+        MonotonicQueue<Integer> monotonicQueue = new MonotonicQueue<>();
         for (int i = 0; i < n; i++) {
             monotonicQueue.push(nums[i]);
             if (i - k + 1 >= 0) {
