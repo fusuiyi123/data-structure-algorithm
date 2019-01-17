@@ -5,30 +5,6 @@ import java.util.Stack;
 
 public class Others {
 
-    // 150. Evaluate Reverse Polish Notation
-    public int evalRPN(String[] tokens) {
-        int a, b;
-        Stack<Integer> S = new Stack<>();
-        for (String s : tokens) {
-            if (s.equals("+")) {
-                S.add(S.pop()+S.pop());
-            } else if (s.equals("/")) {
-                b = S.pop();
-                a = S.pop();
-                S.add(a / b);
-            } else if (s.equals("*")) {
-                S.add(S.pop() * S.pop());
-            } else if (s.equals("-")) {
-                b = S.pop();
-                a = S.pop();
-                S.add(a - b);
-            } else {
-                S.add(Integer.parseInt(s));
-            }
-        }
-        return S.pop();
-    }
-
     // 169 Majority Element Boyer-Moore Voting Algorithm
     public int majorityElement(int[] nums) {
         int count = 0;
