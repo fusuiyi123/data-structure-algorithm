@@ -1,32 +1,9 @@
-package com.leetcode;
+package com.leetcode.stack;
 
 import java.util.Stack;
 
 public class Stacks {
 
-    // 150. Evaluate Reverse Polish Notation
-    public int evalRPN(String[] tokens) {
-        int a, b;
-        Stack<Integer> S = new Stack<>();
-        for (String s : tokens) {
-            if (s.equals("+")) {
-                S.add(S.pop()+S.pop());
-            } else if (s.equals("/")) {
-                b = S.pop();
-                a = S.pop();
-                S.add(a / b);
-            } else if (s.equals("*")) {
-                S.add(S.pop() * S.pop());
-            } else if (s.equals("-")) {
-                b = S.pop();
-                a = S.pop();
-                S.add(a - b);
-            } else {
-                S.add(Integer.parseInt(s));
-            }
-        }
-        return S.pop();
-    }
 
     // 227. Basic Calculator II
     // Input: "3+2*2"
