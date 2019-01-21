@@ -1,5 +1,7 @@
-package com.leetcode;
+package com.leetcode.heap;
 
+// https://algs4.cs.princeton.edu/24pq/
+// priority queue based on max heap
 public class MaxPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int N;
