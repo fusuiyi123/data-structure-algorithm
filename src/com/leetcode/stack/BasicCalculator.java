@@ -2,7 +2,7 @@ package com.leetcode.stack;
 
 import java.util.Stack;
 
-public class Stacks {
+public class BasicCalculator {
 
 
     // 227. Basic Calculator II

@@ -1,4 +1,4 @@
-package com.leetcode;
+package hashing;
 
 public class HashTable {
 

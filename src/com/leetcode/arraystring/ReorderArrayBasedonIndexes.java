@@ -17,4 +17,7 @@ public class ReorderArrayBasedonIndexes {
         System.out.println(Arrays.toString(arr));
     }
 
+    public static void main(String[] args) {
+        reorder(new int[]{50, 40, 70, 60, 90}, new int[]{3,  0,  4,  1,  2});
+    }
 }
