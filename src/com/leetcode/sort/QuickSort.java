@@ -2,6 +2,8 @@ package com.leetcode.sort;
 
 import com.leetcode.others.ShuffleArray;
 
+import static com.leetcode.sort.Helper.*;
+
 // https://algs4.cs.princeton.edu/23quicksort/Quick.java.html
 public class QuickSort {
     private QuickSort() {}
@@ -55,33 +57,6 @@ public class QuickSort {
         return a[lo];
     }
 
-
-    private static boolean less(Comparable v, Comparable w) {
-        if (v == w) return false;
-        return v.compareTo(w) < 0;
-    }
-
-    private static void swap(Object[] a, int i, int j) {
-        Object temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
-    private static boolean isSorted(Comparable[] a) {
-        return isSorted(a, 0, a.length - 1);
-    }
-
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int i = lo + 1; i <= hi; i++)
-            if (less(a[i], a[i-1])) return false;
-        return true;
-    }
-
-    private static void show(Comparable[] a) {
-        for (Comparable x : a) {
-            System.out.print(x + ",");
-        }
-    }
 
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{3,2,1,5,2,3,5,6,12,3,4};
