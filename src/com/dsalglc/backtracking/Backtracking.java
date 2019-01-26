@@ -1,4 +1,4 @@
-package com.dsalglc;
+package com.dsalglc.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
