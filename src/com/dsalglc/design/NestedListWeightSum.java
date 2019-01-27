@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class NestedListWeightSum {
-    public interface NestedInteger {
-        public boolean isInteger();
-        public Integer getInteger();
-        public List<NestedInteger> getList();
-    }
 
     int res = 0;
     public int depthSum(List<NestedInteger> nestedList) {

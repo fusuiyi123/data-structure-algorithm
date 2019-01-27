@@ -3,6 +3,15 @@ package com.dsalglc.design;
 import java.util.Iterator;
 import java.util.List;
 
+// Vector2D iterator = new Vector2D([[1,2],[3],[4]]);
+//
+// iterator.next(); // return 1
+// iterator.next(); // return 2
+// iterator.next(); // return 3
+// iterator.hasNext(); // return true
+// iterator.hasNext(); // return true
+// iterator.next(); // return 4
+// iterator.hasNext(); // return false
 public class Flatten2DVector {
 
     // 251. Flatten 2D Vector
