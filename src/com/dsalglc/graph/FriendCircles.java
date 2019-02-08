@@ -9,9 +9,7 @@ public class FriendCircles {
         for (int i = 0; i < N; i++) {
             for (int j = i + 1; j < N; j++) {
                 if (M[i][j] == 1) {
-                    int a = uf.find(i);
-                    int b = uf.find(j);
-                    uf.union(a, b);
+                        uf.union(i, j);
                 }
             }
         }

@@ -1,6 +1,6 @@
 package com.dsalglc.graph;
 
-public class UnionFind {
+class UnionFind {
 
     public int[] parent;
 
@@ -13,7 +13,7 @@ public class UnionFind {
 
     // quick union
     public void union(int a, int b) {
-        parent[a] = b;
+        parent[find(a)] = find(b);
     }
 
     // find with path compression

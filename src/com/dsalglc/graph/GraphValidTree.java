@@ -14,7 +14,7 @@ public class GraphValidTree {
             if (a == b) {
                 return false;
             }
-            uf.union(a, b);
+            uf.union(edge[0], edge[1]);
         }
         return true;
     }
