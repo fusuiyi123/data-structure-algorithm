@@ -1,6 +1,6 @@
 package com.dsalglc.graph;
 
-class UnionFind {
+public class UnionFind {
 
     public int[] parent;
 
