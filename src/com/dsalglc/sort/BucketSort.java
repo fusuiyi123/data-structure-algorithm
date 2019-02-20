@@ -45,6 +45,39 @@ public class BucketSort {
         return res;
     }
 
+
+    // 274. H-Index
+    // "A scientist has index h if h of his/her N papers have at least h citations each,
+    // and the other N − h papers have no more than h citations each."
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int[] bucket = new int[n+1];
+        for (int c : citations) {
+            if (c >= n) bucket[n]++;
+            else bucket[c]++;
+        }
+        int count = 0;
+        for (int i = n; i >= 0; i--) {
+            count += bucket[i];
+            if (count >= i) return i;
+        }
+        return 0;
+    }
+
+    // 275. H-Index II TODO binary search
+    // Given an array of citations sorted in ascending order (each citation is a non-negative integer)
+    // of a researcher, write a function to compute the researcher's h-index.
+    public int hIndex2(int[] citations) {
+        int n = citations.length;
+        int lo = 0, hi = n - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (citations[mid] >= n - mid) hi = mid - 1;
+            else lo = mid + 1;
+        }
+        return n - lo;
+    }
+
     public static void main(String[] args) {
         int maxVal=5;
         int [] data= {5,3,0,2,4,1,0,5,2,3,1,4};
